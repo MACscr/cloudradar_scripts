@@ -39,5 +39,5 @@ if len(sys.argv) == 4:
 elif len(sys.argv) == 5:
    notify(sys.argv[1],sys.argv[2],sys.argv[3],sys.argv[4])
 else:
-  sys.stderr.write("Example: ./notify_cloudradar 'token' 1 'checkname' 'json_data'\n");
+  sys.stderr.write("Example: ./notify_cloudradar 'token' checkname' 1 'json_data'\n");
   sys.exit(0)
