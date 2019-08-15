@@ -27,6 +27,8 @@ Example Format for Notifications:
 
 - dns_check <domain> <dns_server>
 - galera_check <integer_of_cluster_total_required>
+- ssl_check <domain> <integer_min_days_before_expire>
+- csf_check
 
 ## Quickstart
 
@@ -35,7 +37,10 @@ Simply add checks like below to this packages cron file and then setup a cronjob
 ```bash
 notify_cloudradar '123455' 'ns4dns' "$(dns_check google.com 1.2.3.4)"
 notify_cloudradar '123453' 'galera' "$(galera_check 4)"
+notify_cloudradar '123453' 'galera' "$(galera_check 4)"
 ```
+
+Lets run the cron every 5 minutes. Good idea to set the custom check in CloudRadar.io to 10 minutes.
 
 ```
 */5 * * * * cd /root/cloudradar_checks/;./cron;

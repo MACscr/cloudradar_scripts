@@ -1,0 +1,18 @@
+#!/bin/bash
+
+if [ -d '/etc/csf' ]; then
+  if [[ "$(csf --status | grep DROP -c)" -gt 0 ]]; then
+    if [[ "$(ps aux | grep 'lfd' | grep -v grep | wc -l)" -eq 0 ]]; then
+      #echo "CSF WARNING – CSF is running but LFD is stopped"
+      echo 0
+    fi
+    #echo "CSF OK – Running"
+    echo 1
+  else
+    #echo "CSF CRITICAL – NOT Running"
+    echo 0
+  fi
+else
+  #echo "CSF CRITICAL – NOT installed"
+  echo 0
+fi
