@@ -14,7 +14,7 @@ At the heart of this library is the notify_cloudradar script that makes it a bit
 - Token and checkname must match the custom check that you have setup in CloudRadar.io for the host
 - json_data is optional. Sending a success_integer value of 0 or 1 is good enough
 
-Example Format:
+Example Format for Notifications:
 
 ```bash
 ./notify_cloudradar 'token' 'checkname' success_integer 'json_data'
@@ -27,3 +27,16 @@ Example Format:
 
 - dns_check <domain> <dns_server>
 - galera_check <integer_of_cluster_total_required>
+
+## Quickstart
+
+Simply add checks like below to this packages cron file and then setup a cronjob to run that cron file every 5 minutes:
+
+```bash
+notify_cloudradar '123455' 'ns4dns' "$(dns_check google.com 1.2.3.4)"
+notify_cloudradar '123453' 'galera' "$(galera_check 4)"
+```
+
+```
+*/5 * * * * cd /root/cloudradar_checks/;./cron;
+```
