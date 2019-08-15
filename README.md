@@ -23,3 +23,7 @@ Example Format:
 ```bash
 ./notify_cloudradar '123456' 'backup' 1 '{"target": "backup.example.com"}'
 ```
+## Custom Checks
+
+- dns_check <domain> <dns_server>
+- galera_check <integer_of_cluster_total_required>

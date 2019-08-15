@@ -1,4 +1,5 @@
 #!/bin/bash
+# ./galera_check 4
 # of 1=success | 0=failed
 
 expected_size=$1

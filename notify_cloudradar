@@ -6,24 +6,23 @@ import sys
 
 # we simply need prepend the name value plus period to the keys
 def modify_data(name,success,data):
+
   json_data = json.loads(data)
   json_data['success'] = int(success)
-  #print(json_data)
+
   modified_data = {}
   for (k, v) in json_data.items():
     modified_data[name + "." + k] = v
-  #print(modified_data)
+
   return modified_data
 
-# in order to limit requirements, lets just use the os command
+# data variable optional
 def notify(token,name,success,data = '{}'):
 
   url = "https://hub.cloudradar.io/cct/"
   # Need format like so for data: { "backup.success": 1, "backup.target" : "backup.example.com"}
   payload = modify_data(name,success,data)
   headers = { 'X-CustomCheck-Token': token }
-
-  print(json.dumps(payload))
 
   response = requests.request("POST", url, data=json.dumps(payload), headers=headers)
   if response.status_code != 204:
@@ -39,5 +38,5 @@ if len(sys.argv) == 4:
 elif len(sys.argv) == 5:
    notify(sys.argv[1],sys.argv[2],sys.argv[3],sys.argv[4])
 else:
-  sys.stderr.write("Example: ./notify_cloudradar 'token' checkname' status_integer 'json_data'\n");
+  sys.stderr.write("Example: ./notify_cloudradar 'token' 'checkname' status_integer 'json_data'\n");
   sys.exit(0)

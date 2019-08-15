@@ -1,0 +1,8 @@
+#!/bin/bash
+PATH=$PATH:$PWD:$PWD/scripts/;
+
+notify_cloudradar '123456' 'ns1dns' "$(dns_check google.com 1.1.1.1)"
+notify_cloudradar '123457' 'ns2dns' "$(dns_check google.com 8.8.8.8)"
+notify_cloudradar '123459' 'ns3dns' "$(dns_check google.com 4.4.4.4)"
+notify_cloudradar '123455' 'ns4dns' "$(dns_check google.com 1.2.3.4)"
+notify_cloudradar '123453' 'galera' "$(galera_check 4)"

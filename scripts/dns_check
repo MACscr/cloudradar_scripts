@@ -1,4 +1,5 @@
 #!/bin/bash
+# ./dns_check google.com 1.1.1.1
 # of 1=success | 0=failed
 
 domain="$1"
